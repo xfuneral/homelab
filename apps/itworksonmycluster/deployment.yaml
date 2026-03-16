@@ -21,3 +21,5 @@ spec:
           env:
             - name: url
               value: https://itworksonmycluster.com
+            - name: database_client
+              value: sqlite3
