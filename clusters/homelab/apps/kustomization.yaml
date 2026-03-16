@@ -3,3 +3,4 @@ kind: Kustomization
 resources:
 - ../../../apps/memos
 - ../../../apps/monitoring
+- ../../../apps/itworksonmycluster
