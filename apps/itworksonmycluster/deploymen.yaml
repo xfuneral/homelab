@@ -23,6 +23,8 @@ spec:
               value: production
             - name: url
               value: https://itworksonmycluster.com
+            - name: TRUST_PROXY
+              value: "true"
             - name: database__client
               value: sqlite3
             - name: database__connection__filename
