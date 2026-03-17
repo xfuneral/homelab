@@ -21,5 +21,14 @@ spec:
           env:
             - name: url
               value: https://itworksonmycluster.com
-            - name: database_client
+            - name: database__client
               value: sqlite3
+            - name: database__connection__filename
+              value: content/data/ghost.db
+          volumeMounts:
+            - name: ghost-data
+              mountPath: /var/lib/ghost/content
+      volumes:
+        - name: ghost-data
+          persistentVolumeClaim:
+            claimName: ghost-data
