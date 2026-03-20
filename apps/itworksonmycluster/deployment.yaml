@@ -4,7 +4,7 @@ metadata:
   name: ghost
   namespace: apps
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: ghost
@@ -26,16 +26,31 @@ spec:
             - name: X_FORWARDED_PROTO
               value: https
             - name: database__client
-              value: sqlite3
-            - name: database__connection__filename
-              value: /var/lib/ghost/content/data/ghost.db
+              value: mysql
+            - name: database__connection__host
+              value: mysql
+            - name: database__connection__user
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-secret
+                  key: username
+            - name: database__connection__password
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-secret
+                  key: password
+            - name: database__connection__database
+              value: ghost
+
             - name: server__host
               value: 0.0.0.0
             - name: server__port
               value: "2368"
+
           volumeMounts:
             - name: ghost-data
               mountPath: /var/lib/ghost/content
+
       volumes:
         - name: ghost-data
           persistentVolumeClaim:
