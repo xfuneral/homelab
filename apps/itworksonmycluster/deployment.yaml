@@ -36,6 +36,14 @@ spec:
           volumeMounts:
             - name: ghost-data
               mountPath: /var/lib/ghost/content
+
+          # seeing if readiness probe helps me fixing host error
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 2368
+            initialDelaySeconds: 10
+            periodSeconds: 5
       volumes:
         - name: ghost-data
           persistentVolumeClaim:
