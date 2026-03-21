@@ -40,8 +40,11 @@ spec:
           # seeing if readiness probe helps me fixing host error
           readinessProbe:
             httpGet:
-              path: /ghost/
+              path: /
               port: 2368
+              httpHeaders:
+                - name: Host
+                  value: itworksonmycluster.com
             initialDelaySeconds: 10
             periodSeconds: 5
       volumes:
