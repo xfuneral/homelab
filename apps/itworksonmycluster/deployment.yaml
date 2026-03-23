@@ -18,15 +18,18 @@ spec:
           image: ghost:5
           ports:
             - containerPort: 2368
+
           env:
             - name: NODE_ENV
               value: production
+
             - name: url
               value: https://itworksonmycluster.com
+
             - name: X_FORWARDED_PROTO
               value: https
 
-            #MySQL CONFIG testing
+            # MySQL CONFIG
             - name: database__client
               value: mysql
 
@@ -51,11 +54,25 @@ spec:
                   name: mysql-secret
                   key: MYSQL_DATABASE
 
-            #Server config
+            # Server config
             - name: server__host
               value: 0.0.0.0
             - name: server__port
               value: "2368"
+
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 2368
+            initialDelaySeconds: 20
+            periodSeconds: 10
+
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 2368
+            initialDelaySeconds: 60
+            periodSeconds: 20
 
           volumeMounts:
             - name: ghost-data
