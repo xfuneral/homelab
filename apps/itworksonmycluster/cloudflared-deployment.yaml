@@ -20,6 +20,7 @@ spec:
             - tunnel
             - --no-autoupdate
             - run
+            - --http-host-header=itworksonmycluster.com
           env:
             - name: TUNNEL_TOKEN
               valueFrom:
