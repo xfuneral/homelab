@@ -5,9 +5,17 @@ metadata:
   namespace: apps
 spec:
   replicas: 1
+
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 0
+      maxUnavailable: 1
+
   selector:
     matchLabels:
       app: ghost
+
   template:
     metadata:
       labels:
@@ -59,20 +67,6 @@ spec:
               value: 0.0.0.0
             - name: server__port
               value: "2368"
-
-          readinessProbe:
-            httpGet:
-              path: /
-              port: 2368
-            initialDelaySeconds: 20
-            periodSeconds: 10
-
-          livenessProbe:
-            httpGet:
-              path: /
-              port: 2368
-            initialDelaySeconds: 60
-            periodSeconds: 20
 
           volumeMounts:
             - name: ghost-data
