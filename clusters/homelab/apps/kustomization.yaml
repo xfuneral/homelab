@@ -4,3 +4,4 @@ resources:
 - ../../../apps/memos
 - ../../../apps/monitoring
 - ../../../apps/itworksonmycluster
+- ../../../apps/it-tools
