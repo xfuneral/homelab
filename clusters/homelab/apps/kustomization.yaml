@@ -5,3 +5,4 @@ resources:
 - ../../../apps/monitoring
 - ../../../apps/itworksonmycluster
 - ../../../apps/it-tools
+- ../../../apps/uptime-kuma
