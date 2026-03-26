@@ -21,6 +21,9 @@ spec:
       labels:
         app: ghost
     spec:
+      nodeSelector:
+        role: node-2
+
       containers:
         - name: ghost
           image: ghost:5
