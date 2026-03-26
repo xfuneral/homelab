@@ -17,3 +17,8 @@ spec:
     grafana:
       service:
         type: ClusterIP
+
+      persistence:
+        enabled: true
+        type: pvc
+        size: 5Gi
