@@ -21,3 +21,11 @@ spec:
         env:
         - name: MEMOS_PORT
           value: "5230"
+        volumeMounts:
+        - name: memos-data
+          mountPath: /var/opt/memos
+
+      volumes:
+      - name: memos-data
+        persistentVolumeClaim:
+          claimName: memos-data
