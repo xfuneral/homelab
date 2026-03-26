@@ -13,6 +13,8 @@ spec:
       labels:
         app: memos
     spec:
+      nodeSelector:
+        role: node-2
       containers:
       - name: memos
         image: ghcr.io/usememos/memos:latest
