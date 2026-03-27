@@ -13,6 +13,8 @@ spec:
       labels:
         app: uptime-kuma
     spec:
+      nodeSelector:
+        role: node-2
       containers:
         - name: uptime-kuma
           image: louislam/uptime-kuma:2

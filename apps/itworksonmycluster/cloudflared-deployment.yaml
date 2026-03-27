@@ -4,7 +4,7 @@ metadata:
   name: cloudflared
   namespace: apps
 spec:
-  replicas: 5
+  replicas: 3
   selector:
     matchLabels:
       app: cloudflared
@@ -13,6 +13,15 @@ spec:
       labels:
         app: cloudflared
     spec:
+
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchLabels:
+                  app: cloudflared
+              topologyKey: "kubernetes.io/hostname"
+
       containers:
         - name: cloudflared
           image: cloudflare/cloudflared:latest
