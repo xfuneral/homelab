@@ -34,6 +34,7 @@ spec:
             httpGet:
               path: /
               port: 2368
+              scheme: HTTP
             initialDelaySeconds: 20
             periodSeconds: 5
             timeoutSeconds: 3
@@ -43,6 +44,7 @@ spec:
             httpGet:
               path: /
               port: 2368
+              scheme: HTTP
             initialDelaySeconds: 60
             periodSeconds: 10
 
@@ -64,7 +66,6 @@ spec:
             - name: X_FORWARDED_PROTO
               value: https
 
-            # MySQL CONFIG
             - name: database__client
               value: mysql
 
@@ -89,9 +90,9 @@ spec:
                   name: mysql-secret
                   key: MYSQL_DATABASE
 
-            # Server config
             - name: server__host
               value: 0.0.0.0
+
             - name: server__port
               value: "2368"
 
