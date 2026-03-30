@@ -32,7 +32,7 @@ spec:
 
           readinessProbe:
             httpGet:
-              path: /
+              path: /ghost/
               port: 2368
               scheme: HTTP
             initialDelaySeconds: 30
@@ -42,7 +42,7 @@ spec:
 
           livenessProbe:
             httpGet:
-              path: /
+              path: /ghost/
               port: 2368
               scheme: HTTP
             initialDelaySeconds: 90
@@ -62,9 +62,6 @@ spec:
 
             - name: url
               value: https://itworksonmycluster.com
-
-            - name: X_FORWARDED_PROTO
-              value: https
 
             - name: database__client
               value: mysql
