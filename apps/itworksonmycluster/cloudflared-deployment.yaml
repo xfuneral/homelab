@@ -4,7 +4,7 @@ metadata:
   name: cloudflared
   namespace: apps
 spec:
-  replicas: 3
+  replicas: 2
   selector:
     matchLabels:
       app: cloudflared
@@ -13,14 +13,13 @@ spec:
       labels:
         app: cloudflared
     spec:
-
       affinity:
         podAntiAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
             - labelSelector:
                 matchLabels:
                   app: cloudflared
-              topologyKey: "kubernetes.io/hostname"
+              topologyKey: kubernetes.io/hostname
 
       containers:
         - name: cloudflared
@@ -29,7 +28,6 @@ spec:
             - tunnel
             - --no-autoupdate
             - run
-            - --http-host-header=itworksonmycluster.com
           env:
             - name: TUNNEL_TOKEN
               valueFrom:
