@@ -35,18 +35,18 @@ spec:
               path: /
               port: 2368
               scheme: HTTP
-            initialDelaySeconds: 20
-            periodSeconds: 5
-            timeoutSeconds: 3
-            failureThreshold: 5
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 10
 
           livenessProbe:
             httpGet:
               path: /
               port: 2368
               scheme: HTTP
-            initialDelaySeconds: 60
-            periodSeconds: 10
+            initialDelaySeconds: 90
+            periodSeconds: 20
 
           resources:
             requests:
