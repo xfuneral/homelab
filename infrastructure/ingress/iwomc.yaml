@@ -6,7 +6,7 @@ metadata:
 spec:
   ingressClassName: traefik
   rules:
-    - host: ghost.itworksonmycluster.com
+    - host: itworksonmycluster.com
       http:
         paths:
           - path: /
