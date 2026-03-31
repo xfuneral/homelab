@@ -4,10 +4,9 @@ metadata:
   name: ghost
   namespace: apps
 spec:
-  type: NodePort
+  type: ClusterIP
   selector:
     app: ghost
   ports:
     - port: 80
       targetPort: 2368
-      nodePort: 30080
