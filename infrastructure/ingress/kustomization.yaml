@@ -1,3 +1,4 @@
 resources:
   - iwomc.yaml
   - memos.yaml
+  - uptime-kuma.yaml
