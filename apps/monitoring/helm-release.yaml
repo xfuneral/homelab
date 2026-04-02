@@ -15,10 +15,13 @@ spec:
         namespace: flux-system
   values:
     grafana:
+      enabled: false
       service:
         type: ClusterIP
 
       persistence:
         enabled: true
-        type: pvc
+        storageClassName: longhorn
+        accessModes:
+          - ReadWriteOnce
         size: 5Gi
