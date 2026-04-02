@@ -15,7 +15,7 @@ spec:
         namespace: flux-system
   values:
     grafana:
-      enabled: false
+      enabled: true
       service:
         type: ClusterIP
 
