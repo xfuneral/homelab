@@ -63,6 +63,9 @@ spec:
             - name: url
               value: https://itworksonmycluster.com
 
+            - name: X_FORWARDED_PROTO
+              value: https
+
             - name: database__client
               value: mysql
 
