@@ -1,0 +1,86 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ghost
+  namespace: apps
+spec:
+  replicas: 1
+
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 0
+      maxUnavailable: 1
+
+  selector:
+    matchLabels:
+      app: ghost
+
+  template:
+    metadata:
+      labels:
+        app: ghost
+    spec:
+      containers:
+        - name: ghost
+          image: ghost:5
+
+          ports:
+            - containerPort: 2368
+
+          env:
+            - name: NODE_ENV
+              value: production
+
+            - name: url
+              value: https://itworksonmycluster.com
+
+            - name: X_FORWARDED_PROTO
+              value: https
+
+            - name: database__client
+              value: mysql
+
+            - name: database__connection__host
+              value: mysql
+
+            - name: database__connection__user
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-secret
+                  key: MYSQL_USER
+
+            - name: database__connection__password
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-secret
+                  key: MYSQL_PASSWORD
+
+            - name: database__connection__database
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-secret
+                  key: MYSQL_DATABASE
+
+            - name: server__host
+              value: 0.0.0.0
+
+            - name: server__port
+              value: "2368"
+
+          volumeMounts:
+            - name: ghost-data
+              mountPath: /var/lib/ghost/content
+
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+
+      volumes:
+        - name: ghost-data
+          persistentVolumeClaim:
+            claimName: ghost-data
