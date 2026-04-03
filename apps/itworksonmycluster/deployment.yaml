@@ -61,7 +61,7 @@ spec:
               value: production
 
             - name: url
-              value: http://itworksonmycluster.com
+              value: https://itworksonmycluster.com
 
             - name: database__client
               value: mysql
