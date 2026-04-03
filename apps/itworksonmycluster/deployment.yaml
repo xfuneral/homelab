@@ -32,7 +32,7 @@ spec:
 
           readinessProbe:
             httpGet:
-              path: /
+              path: /ghost/
               port: 2368
               scheme: HTTP
             initialDelaySeconds: 15
