@@ -4,7 +4,7 @@ metadata:
   name: ghost
   namespace: apps
   annotations:
-    traefik.ingress.kubernetes.io/router.entrypoints: web
+    traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
     traefik.ingress.kubernetes.io/router.forwardedHeaders.insecure: "true"
     traefik.ingress.kubernetes.io/service.passhostheader: "true"
 spec:
