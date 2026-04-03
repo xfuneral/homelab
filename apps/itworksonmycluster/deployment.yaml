@@ -59,7 +59,7 @@ spec:
               value: production
 
             - name: url
-              value: https://itworksonmycluster.com
+              value: http://itworksonmycluster.com
 
             - name: trust_proxy
               value: "true"
