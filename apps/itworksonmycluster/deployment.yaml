@@ -32,19 +32,17 @@ spec:
 
           readinessProbe:
             httpGet:
-              path: /
+              path: /ghost/api/admin/site/
               port: 2368
-              scheme: HTTP
-            initialDelaySeconds: 15
-            periodSeconds: 5
-            timeoutSeconds: 3
-            failureThreshold: 3
+            initialDelaySeconds: 20
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 5
 
           livenessProbe:
             httpGet:
-              path: /
+              path: /ghost/api/admin/site/
               port: 2368
-              scheme: HTTP
             initialDelaySeconds: 60
             periodSeconds: 20
 
