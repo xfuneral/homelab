@@ -5,99 +5,46 @@ metadata:
   namespace: apps
 spec:
   replicas: 1
-
-  strategy:
-    type: RollingUpdate
-    rollingUpdate:
-      maxSurge: 0
-      maxUnavailable: 1
-
   selector:
     matchLabels:
       app: ghost
-
   template:
     metadata:
       labels:
         app: ghost
     spec:
-      nodeSelector:
-        role: node-2
-
       containers:
         - name: ghost
           image: ghost:5
           ports:
             - containerPort: 2368
-
-          readinessProbe:
-            httpGet:
-              path: /ghost/api/admin/site/
-              port: 2368
-            initialDelaySeconds: 20
-            periodSeconds: 10
-            timeoutSeconds: 5
-            failureThreshold: 5
-
-          livenessProbe:
-            httpGet:
-              path: /ghost/api/admin/site/
-              port: 2368
-            initialDelaySeconds: 60
-            periodSeconds: 20
-
-          resources:
-            requests:
-              cpu: "100m"
-              memory: "128Mi"
-            limits:
-              cpu: "500m"
-              memory: "512Mi"
-
           env:
             - name: NODE_ENV
               value: production
-
             - name: url
               value: http://itworksonmycluster.com
-
-            - name: trust_proxy
-              value: "true"
-
             - name: database__client
               value: mysql
-
             - name: database__connection__host
               value: mysql
-
             - name: database__connection__user
               valueFrom:
                 secretKeyRef:
                   name: mysql-secret
                   key: MYSQL_USER
-
             - name: database__connection__password
               valueFrom:
                 secretKeyRef:
                   name: mysql-secret
                   key: MYSQL_PASSWORD
-
             - name: database__connection__database
               valueFrom:
                 secretKeyRef:
                   name: mysql-secret
                   key: MYSQL_DATABASE
-
-            - name: server__host
-              value: 0.0.0.0
-
-            - name: server__port
-              value: "2368"
-
           volumeMounts:
             - name: ghost-data
               mountPath: /var/lib/ghost/content
-
       volumes:
         - name: ghost-data
           persistentVolumeClaim:
