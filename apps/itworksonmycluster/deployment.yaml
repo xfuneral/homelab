@@ -61,7 +61,10 @@ spec:
               value: production
 
             - name: url
-              value: http://itworksonmycluster.com
+              value: https://itworksonmycluster.com
+
+            - name: trust_proxy
+              value: "true"
 
             - name: database__client
               value: mysql
