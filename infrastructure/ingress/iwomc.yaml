@@ -3,6 +3,9 @@ kind: Ingress
 metadata:
   name: ghost
   namespace: apps
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: web
+    traefik.ingress.kubernetes.io/router.forwardedHeaders.insecure: "true"
 spec:
   ingressClassName: traefik
   rules:
