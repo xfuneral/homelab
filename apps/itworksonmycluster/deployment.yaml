@@ -77,6 +77,9 @@ spec:
             httpGet:
               path: /ghost/api/admin/site/
               port: 2368
+              httpHeaders:
+                - name: X-Forwarded-Proto
+                  value: https
             initialDelaySeconds: 20
             periodSeconds: 10
             timeoutSeconds: 5
@@ -86,6 +89,9 @@ spec:
             httpGet:
               path: /ghost/api/admin/site/
               port: 2368
+              httpHeaders:
+                - name: X-Forwarded-Proto
+                  value: https
             initialDelaySeconds: 60
             periodSeconds: 20
             timeoutSeconds: 5
