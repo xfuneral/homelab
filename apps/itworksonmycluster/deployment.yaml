@@ -33,10 +33,7 @@ spec:
               value: production
 
             - name: url
-              value: https://itworksonmycluster.com
-
-            - name: TRUST_PROXY
-              value: "true"
+              value: http://itworksonmycluster.com
 
             - name: database__client
               value: mysql
