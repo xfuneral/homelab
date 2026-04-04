@@ -38,6 +38,9 @@ spec:
             - name: X_FORWARDED_PROTO
               value: https
 
+            - name: TRUST_PROXY
+              value: "true"
+
             - name: database__client
               value: mysql
 
