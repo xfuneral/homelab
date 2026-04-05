@@ -6,6 +6,12 @@ metadata:
 spec:
   replicas: 1
 
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 0
+      maxUnavailable: 1
+
   selector:
     matchLabels:
       app: ghost
@@ -18,6 +24,7 @@ spec:
       containers:
         - name: ghost
           image: ghost:5
+
           ports:
             - containerPort: 2368
 
@@ -29,10 +36,28 @@ spec:
               value: https://itworksonmycluster.com
 
             - name: database__client
-              value: sqlite3
+              value: mysql
 
-            - name: database__connection__filename
-              value: /var/lib/ghost/content/data/ghost.db
+            - name: database__connection__host
+              value: mysql
+
+            - name: database__connection__user
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-secret
+                  key: MYSQL_USER
+
+            - name: database__connection__password
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-secret
+                  key: MYSQL_PASSWORD
+
+            - name: database__connection__database
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-secret
+                  key: MYSQL_DATABASE
 
           volumeMounts:
             - name: ghost-content
