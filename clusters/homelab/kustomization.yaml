@@ -5,3 +5,4 @@ resources:
 - apps
 - ./longhorn
 - ../../infrastructure/ingress
+- ../../infrastructure/mysql
