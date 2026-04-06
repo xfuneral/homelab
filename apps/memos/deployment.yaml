@@ -5,24 +5,27 @@ metadata:
   namespace: apps
 spec:
   replicas: 1
+
   selector:
     matchLabels:
       app: memos
+
   template:
     metadata:
       labels:
         app: memos
     spec:
-      nodeSelector:
-        role: node-2
       containers:
       - name: memos
         image: ghcr.io/usememos/memos:latest
+
         ports:
         - containerPort: 5230
+
         env:
         - name: MEMOS_PORT
           value: "5230"
+
         volumeMounts:
         - name: memos-data
           mountPath: /var/opt/memos
