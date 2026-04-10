@@ -3,3 +3,4 @@ resources:
   - uptime-kuma.yaml
   - grafana.yaml
   - gotify.yaml
+  - it-tools.yaml
