@@ -6,7 +6,7 @@ metadata:
 spec:
   ingressClassName: traefik
   rules:
-    - host: linkwarden.itworksonmycluster.com
+    - host: link.itworksonmycluster.com
       http:
         paths:
           - path: /
