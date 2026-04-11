@@ -7,3 +7,4 @@ resources:
 - ../../../apps/it-tools
 - ../../../apps/uptime-kuma
 - ../../../apps/gotify
+- ../../../apps/linkwarden
