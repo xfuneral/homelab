@@ -13,6 +13,9 @@ spec:
       labels:
         app: linkwarden
     spec:
+      nodeSelector:
+        node-type: worker
+
       containers:
         - name: linkwarden
           image: ghcr.io/linkwarden/linkwarden:latest
@@ -32,6 +35,7 @@ spec:
           volumeMounts:
             - name: data
               mountPath: /data
+
       volumes:
         - name: data
           persistentVolumeClaim:
