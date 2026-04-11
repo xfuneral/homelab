@@ -1,1 +1,3 @@
 infrastructure/mysql/secret.yaml
+kubeseal
+apps/kubeseal
