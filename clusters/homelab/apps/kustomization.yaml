@@ -3,7 +3,6 @@ kind: Kustomization
 resources:
 - ../../../apps/memos
 - ../../../apps/monitoring
-- ../../../apps/itworksonmycluster
 - ../../../apps/it-tools
 - ../../../apps/uptime-kuma
 - ../../../apps/gotify
