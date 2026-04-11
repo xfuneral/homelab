@@ -4,3 +4,4 @@ resources:
   - grafana.yaml
   - gotify.yaml
   - it-tools.yaml
+  - linkwarden.yaml
