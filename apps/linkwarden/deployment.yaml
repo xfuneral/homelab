@@ -15,30 +15,21 @@ spec:
       labels:
         app: linkwarden
     spec:
-      nodeSelector:
-        node-type: worker
-
       containers:
         - name: linkwarden
           image: ghcr.io/linkwarden/linkwarden:latest
           ports:
             - containerPort: 3000
+
           env:
             - name: DATABASE_URL
               valueFrom:
                 secretKeyRef:
                   name: linkwarden-secret
                   key: DATABASE_URL
+
             - name: NEXTAUTH_SECRET
               valueFrom:
                 secretKeyRef:
                   name: linkwarden-secret
                   key: NEXTAUTH_SECRET
-          volumeMounts:
-            - name: data
-              mountPath: /data
-
-      volumes:
-        - name: data
-          persistentVolumeClaim:
-            claimName: linkwarden-data
