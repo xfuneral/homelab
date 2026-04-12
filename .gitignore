@@ -2,3 +2,4 @@ infrastructure/mysql/secret.yaml
 kubeseal
 apps/kubeseal
 */secret.yaml
+flux-system-secret.yaml
