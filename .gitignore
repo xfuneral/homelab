@@ -4,3 +4,12 @@ apps/kubeseal
 */secret.yaml
 flux-system-secret.yaml
 *.log
+*.env
+secrets.yaml
+*.tmp
+*.bakinfrastructure/mysql/secret.yaml
+kubeseal
+apps/kubeseal
+*/secret.yaml
+flux-system-secret.yaml
+*.log
