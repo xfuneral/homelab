@@ -3,3 +3,4 @@ kubeseal
 apps/kubeseal
 */secret.yaml
 flux-system-secret.yaml
+*.log
