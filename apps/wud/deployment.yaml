@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wud
+  namespace: apps
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: wud
+  template:
+    metadata:
+      labels:
+        app: wud
+    spec:
+      nodeSelector:
+        node-type: worker
+
+      containers:
+        - name: wud
+          image: getwud/wud:latest
+          ports:
+            - containerPort: 3000
+
+          volumeMounts:
+            - name: wud-data
+              mountPath: /store
+
+          env:
+            - name: WUD_WATCHER_LOCAL_CRON
+              value: "0 */6 * * *"  # check every 6h
+
+            - name: WUD_SERVER_PORT
+              value: "3000"
+
+            - name: WUD_UI_ENABLED
+              value: "true"
+
+      volumes:
+        - name: wud-data
+          persistentVolumeClaim:
+            claimName: wud-data

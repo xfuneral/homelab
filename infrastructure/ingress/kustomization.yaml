@@ -5,3 +5,4 @@ resources:
   - gotify.yaml
   - it-tools.yaml
   - linkwarden.yaml
+  - wud.yaml
