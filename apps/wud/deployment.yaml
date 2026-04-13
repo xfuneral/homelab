@@ -13,9 +13,6 @@ spec:
       labels:
         app: wud
     spec:
-      nodeSelector:
-        node-type: worker
-
       containers:
         - name: wud
           image: getwud/wud:latest
