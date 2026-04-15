@@ -7,3 +7,4 @@ resources:
 - ../../../apps/uptime-kuma
 - ../../../apps/gotify
 - ../../../apps/wud
+- ../../../apps/family-status

@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: family-status
+  namespace: my-apps
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: family-status
+  template:
+    metadata:
+      labels:
+        app: family-status
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: kubernetes
+
+      containers:
+        - name: family-status
+          image: family-status:v0.3
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8333
