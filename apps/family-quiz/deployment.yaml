@@ -20,4 +20,4 @@ spec:
           image: family-quiz:v1
           imagePullPolicy: IfNotPresent
           ports:
-            - containerPort: 80
+            - containerPort: 8000
