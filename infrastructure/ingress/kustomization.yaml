@@ -7,3 +7,4 @@ resources:
   - linkwarden.yaml
   - wud.yaml
   - family-status.yaml
+  - family-quiz.yaml

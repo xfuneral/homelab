@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: family-quiz
+  namespace: my-apps
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: family-quiz
+  template:
+    metadata:
+      labels:
+        app: family-quiz
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: kubernetes
+      containers:
+        - name: family-quiz
+          image: family-quiz:v1
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80

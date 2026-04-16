@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: family-quiz
+  namespace: my-apps
+  annotations:
+    kubernetes.io/ingress.class: traefik
+spec:
+  rules:
+    - host: quiz.porcocan.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: family-quiz
+                port:
+                  number: 80
