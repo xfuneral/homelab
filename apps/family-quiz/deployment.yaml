@@ -17,7 +17,7 @@ spec:
         kubernetes.io/hostname: kubernetes
       containers:
         - name: family-quiz
-          image: family-quiz:v1
+          image: family-quiz:v2
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8000
