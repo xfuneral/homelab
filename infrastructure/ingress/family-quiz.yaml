@@ -3,9 +3,8 @@ kind: Ingress
 metadata:
   name: family-quiz
   namespace: my-apps
-  annotations:
-    kubernetes.io/ingress.class: traefik
 spec:
+  ingressClassName: traefik
   rules:
     - host: quiz.porcocan.com
       http:
