@@ -18,22 +18,10 @@ spec:
           image: getwud/wud:latest
           ports:
             - containerPort: 3000
-
-          volumeMounts:
-            - name: wud-data
-              mountPath: /store
-
           env:
             - name: WUD_WATCHER_LOCAL_CRON
-              value: "0 */6 * * *"  # check every 6h
-
+              value: "0 */6 * * *"
             - name: WUD_SERVER_PORT
               value: "3000"
-
             - name: WUD_UI_ENABLED
               value: "true"
-
-      volumes:
-        - name: wud-data
-          persistentVolumeClaim:
-            claimName: wud-data
