@@ -6,6 +6,5 @@ resources:
 - ../../../apps/it-tools
 - ../../../apps/uptime-kuma
 - ../../../apps/gotify
-- ../../../apps/wud
 - ../../../apps/family-status
 - ../../../apps/family-quiz
