@@ -8,3 +8,4 @@ resources:
   - wud.yaml
   - family-status.yaml
   - family-quiz.yaml
+  - habits.yaml

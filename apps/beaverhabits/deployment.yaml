@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: beaverhabits
+  namespace: personal
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: beaverhabits
+  template:
+    metadata:
+      labels:
+        app: beaverhabits
+    spec:
+      securityContext:
+        fsGroup: 65534
+      containers:
+        - name: beaverhabits
+          image: daya0576/beaverhabits:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          env:
+            - name: HABITS_STORAGE
+              value: USER_DISK
+            - name: INDEX_HABIT_DATE_COLUMNS
+              value: "5"
+            - name: ENABLE_IOS_STANDALONE
+              value: "true"
+          volumeMounts:
+            - name: beaver-data
+              mountPath: /app/.user/
+          securityContext:
+            runAsUser: 65534
+            runAsGroup: 65534
+            allowPrivilegeEscalation: false
+          readinessProbe:
+            tcpSocket:
+              port: 8080
+            initialDelaySeconds: 10
+            periodSeconds: 10
+          livenessProbe:
+            tcpSocket:
+              port: 8080
+            initialDelaySeconds: 30
+            periodSeconds: 20
+      volumes:
+        - name: beaver-data
+          persistentVolumeClaim:
+            claimName: beaver-data
