@@ -28,6 +28,8 @@ spec:
               value: "5"
             - name: ENABLE_IOS_STANDALONE
               value: "true"
+            - name: MAX_USER_COUNT
+              value: "1"
           volumeMounts:
             - name: beaver-data
               mountPath: /app/.user/
