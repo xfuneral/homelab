@@ -9,3 +9,4 @@ resources:
 - ../../../apps/family-status
 - ../../../apps/family-quiz
 - ../../../apps/beaverhabits
+- ../../../apps/vault
