@@ -31,13 +31,18 @@ spec:
     driver:
       kind: modern_ebpf
 
-    falcosidekick:
-      enabled: true
-      config:
-        debug: false
-
     falco:
       json_output: true
       json_include_output_property: true
+
+    falcosidekick:
+      enabled: true
+
+      config:
+        debug: false
+
+      webui:
+        enabled: true
+        existingSecret: falcosidekick-ui-secret
 
     tty: true
