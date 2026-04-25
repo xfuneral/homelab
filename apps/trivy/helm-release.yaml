@@ -1,0 +1,25 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: trivy-operator
+  namespace: security
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: trivy-operator
+      version: "0.32.1"
+      sourceRef:
+        kind: HelmRepository
+        name: aqua
+        namespace: security
+      interval: 12h
+  values:
+    trivy:
+      ignoreUnfixed: true
+
+    operator:
+      scanJobTimeout: 5m
+
+    serviceMonitor:
+      enabled: false
