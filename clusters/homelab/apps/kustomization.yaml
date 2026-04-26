@@ -11,3 +11,4 @@ resources:
 - ../../../apps/beaverhabits
 - ../../../apps/vault
 - ../../../apps/falco
+- ../../../apps/trivy
