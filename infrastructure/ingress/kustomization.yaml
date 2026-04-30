@@ -5,7 +5,6 @@ resources:
   - gotify.yaml
   - it-tools.yaml
   - linkwarden.yaml
-  - wud.yaml
   - family-status.yaml
   - family-quiz.yaml
   - habits.yaml
