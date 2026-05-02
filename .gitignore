@@ -13,3 +13,4 @@ apps/kubeseal
 */secret.yaml
 flux-system-secret.yaml
 *.log
+*.tar
