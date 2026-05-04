@@ -1,0 +1,49 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended"
+  ],
+  "timezone": "Europe/Berlin",
+  "labels": [
+    "renovate",
+    "dependencies"
+  ],
+  "kubernetes": {
+    "managerFilePatterns": [
+      "/apps/.+\\.ya?ml$/",
+      "/infrastructure/.+\\.ya?ml$/",
+      "/clusters/.+\\.ya?ml$/"
+    ]
+  },
+  "flux": {
+    "managerFilePatterns": [
+      "/apps/.+\\.ya?ml$/",
+      "/infrastructure/.+\\.ya?ml$/",
+      "/clusters/.+\\.ya?ml$/"
+    ]
+  },
+  "packageRules": [
+    {
+      "description": "Disable automerge for homelab safety",
+      "matchManagers": [
+        "kubernetes",
+        "flux"
+      ],
+      "automerge": false
+    },
+    {
+      "description": "Group Kubernetes app image updates",
+      "matchManagers": [
+        "kubernetes"
+      ],
+      "groupName": "kubernetes app image updates"
+    },
+    {
+      "description": "Group Flux Helm chart updates",
+      "matchManagers": [
+        "flux"
+      ],
+      "groupName": "flux helm chart updates"
+    }
+  ]
+}
