@@ -12,3 +12,4 @@ resources:
 - ../../../apps/vault
 - ../../../apps/falco
 - ../../../apps/trivy
+- ../../../apps/external-secrets
