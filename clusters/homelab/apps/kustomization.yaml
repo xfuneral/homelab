@@ -13,3 +13,4 @@ resources:
 - ../../../apps/falco
 - ../../../apps/trivy
 - ../../../apps/external-secrets
+- ../../../apps/renovate
