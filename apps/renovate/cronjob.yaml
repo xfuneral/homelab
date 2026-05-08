@@ -1,0 +1,51 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: renovate
+  namespace: renovate
+spec:
+  schedule: "0 5 * * *"
+  timeZone: "Europe/Berlin"
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 3
+  failedJobsHistoryLimit: 3
+  jobTemplate:
+    spec:
+      backoffLimit: 1
+      template:
+        spec:
+          restartPolicy: Never
+          containers:
+            - name: renovate
+              image: renovate/renovate:latest
+              imagePullPolicy: Always
+              env:
+                - name: LOG_LEVEL
+                  value: "info"
+                - name: RENOVATE_PLATFORM
+                  value: "github"
+                - name: RENOVATE_REPOSITORIES
+                  value: "xfuneral/homelab"
+                - name: RENOVATE_ONBOARDING
+                  value: "false"
+                - name: RENOVATE_REQUIRE_CONFIG
+                  value: "required"
+                - name: RENOVATE_AUTODISCOVER
+                  value: "false"
+                - name: RENOVATE_TOKEN
+                  valueFrom:
+                    secretKeyRef:
+                      name: renovate-secret
+                      key: RENOVATE_TOKEN
+                - name: GITHUB_COM_TOKEN
+                  valueFrom:
+                    secretKeyRef:
+                      name: renovate-secret
+                      key: RENOVATE_TOKEN
+              resources:
+                requests:
+                  cpu: 100m
+                  memory: 256Mi
+                limits:
+                  cpu: 500m
+                  memory: 1Gi
