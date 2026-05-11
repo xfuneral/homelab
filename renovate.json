@@ -32,16 +32,46 @@
       "automerge": false
     },
     {
-      "description": "Group Kubernetes app image updates",
+      "description": "Disable major updates for Kubernetes images",
       "matchManagers": [
         "kubernetes"
+      ],
+      "matchUpdateTypes": [
+        "major"
+      ],
+      "enabled": false
+    },
+    {
+      "description": "Disable major updates for Flux Helm charts",
+      "matchManagers": [
+        "flux"
+      ],
+      "matchUpdateTypes": [
+        "major"
+      ],
+      "enabled": false
+    },
+    {
+      "description": "Group non-major Kubernetes app image updates",
+      "matchManagers": [
+        "kubernetes"
+      ],
+      "matchUpdateTypes": [
+        "minor",
+        "patch",
+        "digest"
       ],
       "groupName": "kubernetes app image updates"
     },
     {
-      "description": "Group Flux Helm chart updates",
+      "description": "Group non-major Flux Helm chart updates",
       "matchManagers": [
         "flux"
+      ],
+      "matchUpdateTypes": [
+        "minor",
+        "patch",
+        "digest"
       ],
       "groupName": "flux helm chart updates"
     }
