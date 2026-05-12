@@ -50,30 +50,6 @@
         "major"
       ],
       "enabled": false
-    },
-    {
-      "description": "Group non-major Kubernetes app image updates",
-      "matchManagers": [
-        "kubernetes"
-      ],
-      "matchUpdateTypes": [
-        "minor",
-        "patch",
-        "digest"
-      ],
-      "groupName": "kubernetes app image updates"
-    },
-    {
-      "description": "Group non-major Flux Helm chart updates",
-      "matchManagers": [
-        "flux"
-      ],
-      "matchUpdateTypes": [
-        "minor",
-        "patch",
-        "digest"
-      ],
-      "groupName": "flux helm chart updates"
     }
   ]
 }
