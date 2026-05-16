@@ -14,3 +14,4 @@ resources:
 - ../../../apps/trivy
 - ../../../apps/external-secrets
 - ../../../apps/renovate
+- ../../../apps/muu

@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: muu
+  namespace: my-apps
+spec:
+  ingressClassName: traefik
+  rules:
+    - host: muu.porcocan.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: muu
+                port:
+                  number: 80

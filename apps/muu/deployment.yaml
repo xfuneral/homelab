@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: muu
+  namespace: my-apps
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: muu
+  template:
+    metadata:
+      labels:
+        app: muu
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: kubernetes
+      containers:
+        - name: muu
+          image: muu:v1
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8000
+          volumeMounts:
+            - name: muu-data
+              mountPath: /app/backend
+      volumes:
+        - name: muu-data
+          persistentVolumeClaim:
+            claimName: muu-data
