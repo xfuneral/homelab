@@ -18,7 +18,7 @@ spec:
 
       containers:
         - name: family-status
-          image: family-status:v1.1
+          image: family-status:v1.2
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8333
