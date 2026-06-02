@@ -1,0 +1,110 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: family-status-news-br
+  namespace: my-apps
+spec:
+  schedule: "0 8 * * *"
+  timeZone: Europe/Berlin
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 3
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          restartPolicy: OnFailure
+          containers:
+            - name: trigger-news
+              image: curlimages/curl:8.8.0
+              env:
+                - name: NEWS_REGION
+                  value: br
+                - name: FAMILY_STATUS_URL
+                  value: http://family-status
+                - name: NEWS_BOT_TOKEN
+                  valueFrom:
+                    secretKeyRef:
+                      name: family-status-news-bot
+                      key: NEWS_BOT_TOKEN
+              command:
+                - /bin/sh
+                - -c
+                - >
+                  curl -fsS -X POST
+                  -H "X-News-Bot-Token: ${NEWS_BOT_TOKEN}"
+                  "${FAMILY_STATUS_URL}/internal/news/run?region=${NEWS_REGION}"
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: family-status-news-de
+  namespace: my-apps
+spec:
+  schedule: "0 14 * * *"
+  timeZone: Europe/Berlin
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 3
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          restartPolicy: OnFailure
+          containers:
+            - name: trigger-news
+              image: curlimages/curl:8.8.0
+              env:
+                - name: NEWS_REGION
+                  value: de
+                - name: FAMILY_STATUS_URL
+                  value: http://family-status
+                - name: NEWS_BOT_TOKEN
+                  valueFrom:
+                    secretKeyRef:
+                      name: family-status-news-bot
+                      key: NEWS_BOT_TOKEN
+              command:
+                - /bin/sh
+                - -c
+                - >
+                  curl -fsS -X POST
+                  -H "X-News-Bot-Token: ${NEWS_BOT_TOKEN}"
+                  "${FAMILY_STATUS_URL}/internal/news/run?region=${NEWS_REGION}"
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: family-status-news-jp
+  namespace: my-apps
+spec:
+  schedule: "0 20 * * *"
+  timeZone: Europe/Berlin
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 3
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          restartPolicy: OnFailure
+          containers:
+            - name: trigger-news
+              image: curlimages/curl:8.8.0
+              env:
+                - name: NEWS_REGION
+                  value: jp
+                - name: FAMILY_STATUS_URL
+                  value: http://family-status
+                - name: NEWS_BOT_TOKEN
+                  valueFrom:
+                    secretKeyRef:
+                      name: family-status-news-bot
+                      key: NEWS_BOT_TOKEN
+              command:
+                - /bin/sh
+                - -c
+                - >
+                  curl -fsS -X POST
+                  -H "X-News-Bot-Token: ${NEWS_BOT_TOKEN}"
+                  "${FAMILY_STATUS_URL}/internal/news/run?region=${NEWS_REGION}"

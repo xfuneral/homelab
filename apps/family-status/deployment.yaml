@@ -18,7 +18,13 @@ spec:
 
       containers:
         - name: family-status
-          image: family-status:v1.2
+          image: family-status:v1.3
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8333
+          env:
+            - name: NEWS_BOT_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: family-status-news-bot
+                  key: NEWS_BOT_TOKEN

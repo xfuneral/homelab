@@ -3,3 +3,4 @@ resources:
   - deployment.yaml
   - service.yaml
   - family-status-sm.yaml
+  - cronjob-news.yaml
