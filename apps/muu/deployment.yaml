@@ -23,7 +23,7 @@ spec:
             - containerPort: 8000
           volumeMounts:
             - name: muu-data
-              mountPath: /app/backend
+              mountPath: /app/backend/data
       volumes:
         - name: muu-data
           persistentVolumeClaim:
