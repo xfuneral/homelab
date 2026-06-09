@@ -19,7 +19,7 @@ spec:
         kubernetes.io/hostname: k8snode2
       containers:
         - name: muu
-          image: muu:v9
+          image: muu:v10
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8000
