@@ -5,6 +5,8 @@ metadata:
   namespace: my-apps
 spec:
   replicas: 1
+  strategy:
+    type: Recreate
   selector:
     matchLabels:
       app: muu
@@ -14,7 +16,7 @@ spec:
         app: muu
     spec:
       nodeSelector:
-        kubernetes.io/hostname: kubernetes
+        kubernetes.io/hostname: k8snode2
       containers:
         - name: muu
           image: muu:v8
