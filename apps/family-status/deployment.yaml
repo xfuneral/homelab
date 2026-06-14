@@ -16,6 +16,11 @@ spec:
       nodeSelector:
         kubernetes.io/hostname: kubernetes
 
+      tolerations:
+        - key: "node-role.kubernetes.io/control-plane"
+          operator: "Exists"
+          effect: "NoSchedule"
+
       containers:
         - name: family-status
           image: family-status:v1.4
