@@ -26,6 +26,9 @@ spec:
           volumeMounts:
             - name: muu-data
               mountPath: /app/backend/data
+            - name: muu-data
+              mountPath: /app/backend/uploads
+              subPath: uploads
       volumes:
         - name: muu-data
           persistentVolumeClaim:
