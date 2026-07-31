@@ -42,7 +42,6 @@ spec:
         debug: false
 
       webui:
-        enabled: true
-        existingSecret: falcosidekick-ui-secret
+        enabled: false
 
     tty: true
