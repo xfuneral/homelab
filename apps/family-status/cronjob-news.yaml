@@ -16,7 +16,7 @@ spec:
           restartPolicy: OnFailure
           containers:
             - name: trigger-news
-              image: curlimages/curl:8.8.0
+              image: curlimages/curl:8.21.0
               env:
                 - name: NEWS_REGION
                   value: br
@@ -53,7 +53,7 @@ spec:
           restartPolicy: OnFailure
           containers:
             - name: trigger-news
-              image: curlimages/curl:8.8.0
+              image: curlimages/curl:8.21.0
               env:
                 - name: NEWS_REGION
                   value: de
@@ -90,7 +90,7 @@ spec:
           restartPolicy: OnFailure
           containers:
             - name: trigger-news
-              image: curlimages/curl:8.8.0
+              image: curlimages/curl:8.21.0
               env:
                 - name: NEWS_REGION
                   value: jp
